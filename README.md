@@ -2,11 +2,11 @@
 
 Turn your unread inbox into a broadsheet newspaper front page.
 
-Email Gazette is a [Claude Code skill](https://github.com/vercel-labs/skills) that fetches your unread emails, categorizes them by importance, enriches key stories with web research, and generates a beautiful newspaper-style HTML page you can open in your browser.
+Email Gazette is a skill for the [Skills framework](https://github.com/vercel-labs/skills) that fetches your unread emails, categorizes them by importance, enriches key stories with web research, and generates a beautiful newspaper-style HTML page you can open in your browser. Works with any AI coding agent that supports Skills (Claude Code, Cursor, Windsurf, etc.).
 
 ## What it does
 
-- Fetches unread emails via the [Google Workspace CLI](https://github.com/nicholasgasior/gws) (`gws`)
+- Fetches unread emails via the [Google Workspace CLI](https://github.com/googleworkspace/cli) (`gws`)
 - Categorizes into **Headline News**, **Crucial Alerts**, and **In Other News**
 - Enriches major stories with external sources (news articles, X posts, arXiv papers, blog posts)
 - Generates a self-contained HTML page styled like The New York Times
@@ -16,13 +16,13 @@ Email Gazette is a [Claude Code skill](https://github.com/vercel-labs/skills) th
 ## Installation
 
 ```bash
-npx skills add vincenzoincutti/email-gazette
+npx skills add enzo-inc/email-gazette
 ```
 
 ## Prerequisites
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) with the `gws` CLI installed and authenticated
-- The [gws-gmail](https://github.com/nicholasgasior/gws) skill (for email access)
+- An AI coding agent that supports [Skills](https://github.com/vercel-labs/skills) (Claude Code, Cursor, Windsurf, etc.)
+- The [Google Workspace CLI](https://github.com/googleworkspace/cli) (`gws`) installed and authenticated — install the Gmail skills with `npx skills add googleworkspace/cli --skill gws-gmail`
 
 ## Configuration
 
