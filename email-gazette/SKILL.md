@@ -24,9 +24,26 @@ If this fails, stop and tell the user:
 
 Do not proceed until `gws` is working.
 
-On first use, ask the user to configure their gazette. Store their answers so you remember them across sessions (e.g., in the project's CLAUDE.md or your memory). If they've already configured, skip ahead.
+### Configuration file
 
-Ask these questions:
+All user preferences are stored in a JSON config file at `~/.config/email-gazette/config.json`. This is the single source of truth — check for it on every run.
+
+**If `~/.config/email-gazette/config.json` exists**, read it and use those settings. No need to ask the user anything.
+
+**If it does not exist**, this is a first run. Ask the user to configure their gazette, then save their answers to this file. Create the `~/.config/email-gazette/` directory if needed.
+
+```json
+{
+  "gazette_name": "The Email Gazette",
+  "tagline": "All the Email That's Fit to Print",
+  "output_dir": "~/Desktop/email-gazette",
+  "topics": ["technology", "AI", "business"],
+  "email_cap": 50,
+  "date_format": "YYYY-MM-DD"
+}
+```
+
+Ask these questions during first-run setup:
 
 1. **Gazette name** — "What would you like to call your gazette?" (e.g., "The Morning Wire", "Alex's Daily Brief", "The Inbox Times"). This becomes the masthead title.
 
@@ -40,7 +57,9 @@ Ask these questions:
 
 6. **Date format for filenames** — "How should I name the files?" Default: `YYYY-MM-DD.html` (sorts well). Alternative: `DD-MM-YYYY.html`.
 
-If the user seems impatient or says something like "just use defaults", use sensible defaults (gazette name: "The Email Gazette", tagline: "All the Email That's Fit to Print", output: `~/Desktop/email-gazette/`, topics: technology/AI/business, cap: 50, date: YYYY-MM-DD) and move on.
+If the user seems impatient or says something like "just use defaults", use sensible defaults and save them immediately.
+
+The user can reconfigure at any time by saying "reconfigure my gazette" or "change my gazette settings" — in that case, re-ask the questions and overwrite the config file.
 
 ## Step 1: Fetch Unread Emails
 
